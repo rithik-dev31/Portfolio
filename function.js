@@ -493,4 +493,25 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// window.addEventListener('load', updateHeaderColorOnScroll);
+// form submission success message
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent default browser submit
+
+    const formData = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(() => {
+      alert('Thank you for your message! We will get back to you soon.');
+      form.reset();
+    }).catch((error) => {
+      alert('Oops! There was a problem submitting your form.');
+      console.error(error);
+    });
+  });
+});
