@@ -384,7 +384,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const img = item.querySelector('img');
       const title = item.querySelector('.project-info h3').textContent;
       const desc = item.querySelector('.description').textContent;
-      const previewUrl = item.getAttribute('data-preview');
+      const previewUrl = item.getAttribute('data-preview') || '';
 
       modalImg.src = img.src;
       modalImg.alt = img.alt;
